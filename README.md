@@ -62,8 +62,8 @@ Default: `0`
 Id of the template that should be used for the CSS pages.
 
 ##### options.host
-Type: `number`
-Default: `0`
+Type: `string`
+Default: ``
 
 URL to the CMS system.
 
