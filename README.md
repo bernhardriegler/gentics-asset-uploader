@@ -1,84 +1,69 @@
-# gulp-replace [![NPM version][npm-image]][npm-url] [![Build status][travis-image]][travis-url]
-> A string replace plugin for gulp 3
+# gulp-gentics-asset
+> A gentics asset uploader plugin for gulp 3
 
 ## Usage
 
-First, install `gulp-replace` as a development dependency:
+First, install `gulp-gentics-asset` as a development dependency:
 
 ```shell
-npm install --save-dev gulp-replace
+npm install --save-dev gulp-gentics-asset
 ```
 
 Then, add it to your `gulpfile.js`:
 
 ### Regex Replace
 ```javascript
-var replace = require('gulp-replace');
+var gtx = require('gulp-gentics-asset');
 
-gulp.task('templates', function(){
-  gulp.src(['file.txt'])
-    .pipe(replace(/foo(.{3})/g, '$1foo'))
-    .pipe(gulp.dest('build/file.txt'));
+gulp.task('stream', function () {
+
+	var destDir = path.join("test", "finished");
+
+	return gulp.src("test/fixtures/**/*.css")
+		.pipe(concat('final.css'))
+		.pipe(buffer())
+		.pipe(gtx({
+			basefolder:26869,
+			nodeId:84,
+			templateId:3987,
+			host:"https://gentics.cms.host.com"
+		}))
+		.pipe(gulp.dest(destDir));
 });
 ```
-### String Replace
-```javascript
-var replace = require('gulp-replace');
-
-gulp.task('templates', function(){
-  gulp.src(['file.txt'])
-    .pipe(replace('bar', 'foo'))
-    .pipe(gulp.dest('build/file.txt'));
-});
-```
-
 
 ## API
 
-gulp-replace can be called with a string or regex.
+gulp-gentics-asset can be called with options.
 
-### replace(string, replacement[, options])
+### gulp-gentics-asset options
 
-#### string
-Type: `String`
-
-The string to search for.
-
-#### replacement
-Type: `String` or `Function`
-
-The replacement string or function. If `replacement` is a function, it will be called once for each match and will be passed the string that is to be replaced.
-
-### replace(regex, replacement[, options])
-
-#### regex
-Type: `RegExp`
-
-The regex pattern to search for. See the [MDN documentation for RegExp] for details.
-
-#### replacement
-Type: `String` or `Function`
-
-The replacement string or function. See the [MDN documentation for String.replace] for details.
-
-### gulp-replace options
-
-An optional third argument, `options`, can be passed.
+An argument, `options`, should be passed.
 
 #### options
 Type: `Object`
 
-##### options.skipBinary
-Type: `boolean`  
-Default: `false`
+##### options.basefolder
+Type: `number`
+Default: `0`
 
-Skip binary files
+A folder id in the CMS where the files should be uploaded.
 
+##### options.nodeId
+Type: `number`
+Default: `0`
 
-[MDN documentation for RegExp]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
-[MDN documentation for String.replace]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_string_as_a_parameter
+A node id in the CMS where the files should be uploaded.
 
-[travis-url]: http://travis-ci.org/lazd/gulp-replace
-[travis-image]: https://secure.travis-ci.org/lazd/gulp-replace.svg?branch=master
-[npm-url]: https://npmjs.org/package/gulp-replace
-[npm-image]: https://badge.fury.io/js/gulp-replace.svg
+##### options.templateId
+Type: `number`
+Default: `0`
+
+Id of the template that should be used for the CSS pages.
+
+##### options.host
+Type: `number`
+Default: `0`
+
+URL to the CMS system.
+
