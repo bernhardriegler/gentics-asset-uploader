@@ -1,0 +1,38 @@
+{
+  "name": "gulp-gentics-asset",
+  "version": "0.0.1",
+  "description": "An asset uploader for Gentics CMS and Gulp",
+  "dependencies": {
+    "gulp": "^3.8.2",
+    "gulp-concat": "~2.2.0",
+    "gulp-replace":"0.5.3",
+    "gulp-buffer":"0.0.2",
+    "restler":"3.3.0",
+    "hashmap":"2.0.3",
+    "path": "~0.4.9",
+    "inquirer":"0.8.5",
+    "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "event-stream": "^3.2.2",
+    "mocha": "^2.1.0",
+    "should": "^5.0.0",
+    "vinyl": "^0.4.6"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/csupnig/gulp-gentics-asset.git"
+  },
+  "keywords": [
+    "gulpplugin",
+    "gentics"
+  ],
+  "author": "Christopher Supnig <christopher@supnig.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  }
+}
