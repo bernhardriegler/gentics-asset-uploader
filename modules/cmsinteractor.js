@@ -69,6 +69,10 @@ CMSInteractor.prototype.getOrCreateFile = function(filename) {
 
 };
 
+CMSInteractor.prototype.getOrCreateFolder = function(pubdir) {
+
+};
+
 CMSInteractor.prototype.getOrCreatePage = function(filename) {
     var instance = this,
         deferred = Q.defer();
@@ -91,7 +95,7 @@ CMSInteractor.prototype.getOrCreatePage = function(filename) {
                     deferred.resolve(data.page.id);
                 }).catch(function(error){
                     deferred.reject(error);
-                })
+                });
             }
         }).catch(function(error){
             deferred.reject(error);
